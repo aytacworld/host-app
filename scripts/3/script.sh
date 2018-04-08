@@ -8,8 +8,8 @@ PART_SETUP_DIR=${SETUP_DIR}/3
 echo "Enabling nginx"
 sudo systemctl enable nginx.service
 sudo systemctl start nginx.service
-sudo mkdir /etc/nginx/sites-available
-sudo mkdir /etc/nginx/sites-enabled
+sudo mkdir -p /etc/nginx/sites-available
+sudo mkdir -p /etc/nginx/sites-enabled
 
 # create default config
 echo "Creating nginx default.conf"
