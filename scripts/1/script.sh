@@ -4,12 +4,6 @@ echo "Part one - Setting up hostname hosts and visudo permissions"
 
 PART_SETUP_DIR=${SETUP_DIR}/1
 
-# Gather info
-HOSTNAME=$(cat env/HOSTNAME)
-DOMAIN=$(cat env/DOMAIN)
-FQDN=$(cat env/FQDN)
-IP_ADDRESS=$(cat env/IP_ADDRESS)
-
 # Copy scripts
 echo "Copying hostapp scripts"
 sudo mkdir /usr/local/host-app
