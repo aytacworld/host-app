@@ -6,7 +6,7 @@ PART_SETUP_DIR=${SETUP_DIR}/5
 
 # create node app
 echo "Create host-app"
-cd ~ && mkdir host-app && cd host-app && touch start.js
+cd ~ && mkdir host-main-app && cd host-main-app
 cp ${PART_SETUP_DIR}/package.json ./package.json
 npm i -s express body-parser cors mongodb helmet
 
@@ -20,7 +20,7 @@ chmod +x ./host-app-start.js
 
 # copy files to /var/app
 echo "Copy host-app to apps folder"
-cd ~ && sudo cp host-app/ /var/app/host-app/
+cd ~ && sudo cp -r host-main-app/ /var/app/host-app/
 
 # install PM2 and run node app
 echo "Install pm2 and setup host-app"
