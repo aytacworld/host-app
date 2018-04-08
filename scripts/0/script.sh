@@ -47,3 +47,4 @@ echo "Root setup is done, after pressing enter you will log in as ${USERNAME}"
 echo "Run this command to continue the installation"
 echo "cd host-app && ./setup"
 read -p "press enter"
+su -l ${USERNAME}
