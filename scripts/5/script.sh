@@ -26,6 +26,7 @@ cd ~ && sudo cp -r host-main-app/ /var/app/host-app/
 echo "Install pm2 and setup host-app"
 npm i -g pm2
 pm2 start /var/app/host-app/host-app-start.js --name "host-app"
+pm2 startup
 sudo env PATH=$PATH:${NVM_BIN} ${NVM_BIN}/../lib/node_modules/pm2/bin/pm2 startup systemd -u ${USERNAME} --hp ${HOME}
 
 cd ~
