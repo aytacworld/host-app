@@ -23,7 +23,6 @@ Only Node projects are supported. You can create a pull request for other type o
 After installing a fresh Arch Linux, run the following as a root user.
 
 ```bash
-pacman -S git
 cd ~
 git clone https://github.com/aytacworld/host-app
 cd host-app
@@ -39,3 +38,18 @@ chmod +x ./setup
 To add a new project, run this command.
 
 `ha new <app-name>`
+
+# Troubleshooting
+pacman -S ca-certificates ca-certificates-utils ca-certificates-cacert ca-certificates-mozilla
+## If you get the following error
+```bash
+Cloning into 'host-app'...
+fatal: unable to access 'https://github.com/aytacworld/host-app/': error setting certificate verify locations:
+  CAfile: /etc/ssl/certs/ca-certificates.crt
+  CApath: none
+```
+Install the ca-certificate packages, and retry to clone the project.
+
+```bash
+pacman -S ca-certificates ca-certificates-utils ca-certificates-cacert ca-certificates-mozilla
+```

@@ -16,8 +16,8 @@ IP_ADDRESS=$(ifconfig | awk '/inet /{print substr($2,0)}' | grep -v 127.0.0.10)
 echo ${HOSTNAME} > /etc/hostname
 
 # Set hosts
-sed -i 's/${FQDN}/'"${FQDN}"'/' ${PART_1_SETUP_DIR}/hosts
-sed -i 's/${IP_ADDRESS}/'"${IP_ADDRESS}"'/' ${PART_1_SETUP_DIR}/hosts
+sed -i -e 's/${FQDN}/'"${FQDN}"'/' ${PART_1_SETUP_DIR}/hosts
+sed -i -e 's/${IP_ADDRESS}/'"${IP_ADDRESS}"'/' ${PART_1_SETUP_DIR}/hosts
 cp ${PART_1_SETUP_DIR}/hosts /etc/hosts
 
 # Create user
@@ -26,7 +26,7 @@ echo "Enter password for ${USERNAME}"
 passwd ${USERNAME}
 
 # Set visudo permisions
-sed -i 's/${USERNAME}/'"${USERNAME}"'/' ${PART_1_SETUP_DIR}/visudo
+sed -i -e 's/${USERNAME}/'"${USERNAME}"'/' ${PART_1_SETUP_DIR}/visudo
 cp  ${PART_1_SETUP_DIR}/visudo /etc/sudoers.d/hostapp
 
 # Login as new created user
