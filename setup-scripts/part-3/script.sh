@@ -19,7 +19,7 @@ sudo ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/defa
 sudo cp ${PART_3_SETUP_DIR}/nginx.conf /etc/nginx/nginx.conf
 
 # create default server block
-sed -i -e 's/${FQDN}/'"${FQDN}"'/' ${PART_3_SETUP_DIR}/nginx-default.conf
+sed -i -e 's/${FQDN}/'"${FQDN}"'/g' ${PART_3_SETUP_DIR}/nginx-default.conf
 sudo cp ${PART_3_SETUP_DIR}/nginx-default.conf /etc/nginx/sites-available/default.conf
 
 # setup certbot
