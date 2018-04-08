@@ -14,7 +14,7 @@ sudo mkdir -p /etc/nginx/sites-enabled
 # create default config
 echo "Creating nginx default.conf"
 sudo touch /etc/nginx/sites-available/default.conf
-sudo ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
+sudo ln -sf /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
 # update nginx conf
 echo "Updating nginx.conf"
