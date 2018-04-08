@@ -12,7 +12,7 @@ sudo systemctl start mongodb.service
 
 # create node project folder and package.json
 echo "Create Mongodb app"
-cd ~ && mkdir ${SETUP_DB_DIR} && cd ${SETUP_DB_DIR}
+cd ~ && mkdir -p ${SETUP_DB_DIR} && cd ${SETUP_DB_DIR}
 cp ${PART_SETUP_DIR}/package.json ./package.json
 npm i -s mongodb
 
