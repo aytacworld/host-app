@@ -41,6 +41,7 @@ To add a new project, run this command.
 
 # Troubleshooting
 pacman -S ca-certificates ca-certificates-utils ca-certificates-cacert ca-certificates-mozilla
+
 ## If you get the following error
 ```bash
 Cloning into 'host-app'...
@@ -52,4 +53,9 @@ Install the ca-certificate packages, and retry to clone the project.
 
 ```bash
 pacman -S ca-certificates ca-certificates-utils ca-certificates-cacert ca-certificates-mozilla
+```
+
+## If the setup stops at certain step, you can continue from that step running the setup script like this
+```bash
+./setup <step-number>
 ```

@@ -8,10 +8,29 @@ SETUP_DIR=${HA_DIR}/scripts
 if [ "$(whoami)" == "root" ]; then
   source ${SETUP_DIR}/0/script.sh
 else
-  source ${SETUP_DIR}/1/script.sh
-  source ${SETUP_DIR}/2/script.sh
-  source ${SETUP_DIR}/3/script.sh
-  source ${SETUP_DIR}/4/script.sh
-  source ${SETUP_DIR}/5/script.sh
+  if [ -n "$1"  ]; then
+    STEP=${1}
+  else
+    STEP=1
+  fi
+  if [ $PARAM -lt 2 ]; then
+    source ${SETUP_DIR}/1/script.sh
+  fi
+
+  if [ $PARAM -lt 3 ]; then
+    source ${SETUP_DIR}/2/script.sh
+  fi
+
+  if [ $PARAM -lt 4 ]; then
+    source ${SETUP_DIR}/3/script.sh
+  fi
+
+  if [ $PARAM -lt 5 ]; then
+    source ${SETUP_DIR}/4/script.sh
+  fi
+
+  if [ $PARAM -lt 6 ]; then
+    source ${SETUP_DIR}/5/script.sh
+  fi
 fi
 
