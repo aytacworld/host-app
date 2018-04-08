@@ -1,9 +1,8 @@
 #!/bin/bash
-# ./part-3
 
 echo "Part three - setup nginx as proxy server"
 
-PART_3_SETUP_DIR=${SETUP_DIR}/part-3
+PART_SETUP_DIR=${SETUP_DIR}/3
 
 # setup nginx
 echo "Enabling nginx"
@@ -19,12 +18,12 @@ sudo ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/defa
 
 # update nginx conf
 echo "Updating nginx.conf"
-sudo cp ${PART_3_SETUP_DIR}/nginx.conf /etc/nginx/nginx.conf
+sudo cp ${PART_SETUP_DIR}/nginx.conf /etc/nginx/nginx.conf
 
 # create default server block
 echo "Updating default.conf"
-sed -i -e 's/${FQDN}/'"${FQDN}"'/g' ${PART_3_SETUP_DIR}/nginx-default.conf
-sudo cp ${PART_3_SETUP_DIR}/nginx-default.conf /etc/nginx/sites-available/default.conf
+sed -i -e 's/${FQDN}/'"${FQDN}"'/g' ${PART_SETUP_DIR}/nginx-default.conf
+sudo cp ${PART_SETUP_DIR}/nginx-default.conf /etc/nginx/sites-available/default.conf
 
 # setup certbot
 echo "Generating ssl"

@@ -3,10 +3,15 @@
 set -e
 
 HA_DIR=$(pwd)
-SETUP_DIR=${HA_DIR}/setup-scripts
+SETUP_DIR=${HA_DIR}/scripts
 
-source ${SETUP_DIR}/part-1/script.sh
-source ${SETUP_DIR}/part-2/script.sh
-source ${SETUP_DIR}/part-3/script.sh
-source ${SETUP_DIR}/part-4/script.sh
-source ${SETUP_DIR}/part-5/script.sh
+if [ "$(whoami)" == "root" ]; then
+  source ${SETUP_DIR}/0/script.sh
+else
+  source ${SETUP_DIR}/1/script.sh
+  source ${SETUP_DIR}/2/script.sh
+  source ${SETUP_DIR}/3/script.sh
+  source ${SETUP_DIR}/4/script.sh
+  source ${SETUP_DIR}/5/script.sh
+fi
+

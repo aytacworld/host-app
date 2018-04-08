@@ -1,19 +1,18 @@
 #!/bin/bash
-# ./part-5
 
 echo "Part five - setup node webapp"
 
-PART_5_SETUP_DIR=${SETUP_DIR}/part-5
+PART_SETUP_DIR=${SETUP_DIR}/5
 
 # create node app
 echo "Create host-app"
 cd ~ && mkdir host-app && cd host-app && touch start.js
-cp ${PART_5_SETUP_DIR}/package.json ./package.json
+cp ${PART_SETUP_DIR}/package.json ./package.json
 npm i -s express body-parser cors mongodb helmet
 
 # setup start.js file
 echo "Copy start script"
-cp ${PART_5_SETUP_DIR}/node-start.js ./host-app-start.js
+cp ${PART_SETUP_DIR}/node-start.js ./host-app-start.js
 
 # make startup file executable
 echo "Make script executable"

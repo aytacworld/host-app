@@ -1,5 +1,4 @@
 #!/bin/bash
-# ./part-2
 
 echo "Part two - install all packages and setup firewall"
 
