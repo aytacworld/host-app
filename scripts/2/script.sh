@@ -26,4 +26,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # install node lts
 echo "Installing node lts"
-nvm install —lts
+nvm install --lts
