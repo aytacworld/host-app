@@ -32,7 +32,7 @@ sudo certbot --nginx certonly --agree-tos --register-unsafely-without-email -d $
 # Copy ssl version of defaul conf
 echo "Copy ssl version of default.conf"
 sed -i -e 's/${FQDN}/'"${FQDN}"'/g' ${PART_SETUP_DIR}/nginx-default-after-ssl.conf
-sudo cat ${PART_SETUP_DIR}/nginx-default-after-ssl.conf > /etc/nginx/sites-available/default.conf
+cat ${PART_SETUP_DIR}/nginx-default-after-ssl.conf | sudo tee /etc/nginx/sites-available/default.conf > /dev/null
 
 # restart nginx
 echo "Restart nginx"

@@ -59,3 +59,13 @@ pacman -S ca-certificates ca-certificates-utils ca-certificates-cacert ca-certif
 ```bash
 ./setup <step-number>
 ```
+
+## If you get this error
+```bash
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xc2 in position 10453: ordinal not in range(128)
+```
+try to find a unicode character, which is failing the script, by doing:
+```bash
+sudo grep -r -P '[^\x00-\x7f]' /etc/nginx /etc/letsencrypt
+```
+If it returns some outputs, open the files, and remove those characters. And rerun the setup script from where you left(`./setup 3`)
