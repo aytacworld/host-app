@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+HA_DIR=$(pwd)
+SETUP_DIR=${HA_DIR}/setup-scripts
+
+source ${SETUP_DIR}/part-1/script.sh
+source ${SETUP_DIR}/part-2/script.sh
+source ${SETUP_DIR}/part-3/script.sh
+source ${SETUP_DIR}/part-4/script.sh
+source ${SETUP_DIR}/part-5/script.sh
