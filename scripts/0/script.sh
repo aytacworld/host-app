@@ -15,6 +15,7 @@ echo ${HOSTNAME} > env/HOSTNAME
 echo ${DOMAIN} > env/DOMAIN
 echo ${FQDN} > env/FQDN
 echo ${IP_ADDRESS} > env/IP_ADDRESS
+echo ${USERNAME} > env/USERNAME
 
 # Set hostname
 echo "Updating hostname"

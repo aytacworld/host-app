@@ -3,12 +3,12 @@
 case "$1" in
   new)
     if [ -n "$2" ];
-      then sudo ${HA_DIR}/scripts/create-new $2;
+      then sudo /usr/local/host-app/create-new $2;
       else echo "please provide a name";
     fi
     ;;
   update)
-    then sudo ${HA_DIR}/scripts/update-hostapp
+    then sudo /usr/local/host-app/update-hostapp
   *)
     echo "ha new <app-name>"
     ;;

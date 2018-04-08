@@ -6,7 +6,7 @@ echo "Part two - install all packages and setup firewall"
 echo "Updating and installing pachages"
 sudo pacman -Syy
 sudo pacman -Suu
-sudo pacman -S nginx ca-certificates ca-certificates-utils ca-certificates-cacert ca-certificates-mozilla ufw certbot-nginx mongodb
+sudo pacman -S nginx ufw certbot-nginx mongodb
 
 # setup firewall
 echo "Seting up firewall"

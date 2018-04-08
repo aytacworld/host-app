@@ -23,6 +23,7 @@ Only Node projects are supported. You can create a pull request for other type o
 After installing a fresh Arch Linux, run the following as a root user.
 
 ```bash
+pacman -S ca-certificates ca-certificates-utils ca-certificates-cacert ca-certificates-mozilla
 cd ~
 git clone https://github.com/aytacworld/host-app
 cd host-app
@@ -30,30 +31,17 @@ chmod +x ./setup
 ./setup
 ```
 
-# Update host-app
+After the setup, you should be able to navigate to your FQDN(eg. app.example.com) from any browser.
+
+# Update host-app (TODO)
 
 `ha update`
 
-# Add new application
-To add a new project, run this command.
+# Add new application (TODO)
 
 `ha new <app-name>`
 
 # Troubleshooting
-pacman -S ca-certificates ca-certificates-utils ca-certificates-cacert ca-certificates-mozilla
-
-## If you get the following error
-```bash
-Cloning into 'host-app'...
-fatal: unable to access 'https://github.com/aytacworld/host-app/': error setting certificate verify locations:
-  CAfile: /etc/ssl/certs/ca-certificates.crt
-  CApath: none
-```
-Install the ca-certificate packages, and retry to clone the project.
-
-```bash
-pacman -S ca-certificates ca-certificates-utils ca-certificates-cacert ca-certificates-mozilla
-```
 
 ## If the setup stops at certain step, you can continue from that step running the setup script like this
 ```bash
@@ -69,3 +57,9 @@ try to find a unicode character, which is failing the script, by doing:
 sudo grep -r -P '[^\x00-\x7f]' /etc/nginx /etc/letsencrypt
 ```
 If it returns some outputs, open the files, and remove those characters. And rerun the setup script from where you left(`./setup 3`)
+
+## Npm command not found
+```bash
+/home/adem/host-app/scripts/4/script.sh: line 17: npm: command not found
+```
+type `exit`, so you will be on root account, then relogin as user `su -l <USERNAME>`, and rerun the setup script `cd host-app && ./setup 4`
