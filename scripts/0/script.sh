@@ -42,7 +42,7 @@ echo "Copying all setup files to users home folder"
 cd ..
 cp -r ./host-app/ /home/${USERNAME}/host-app/
 chmod +x /home/${USERNAME}/host-app/setup
-chown -R adem /home/${USERNAME}/host-app/
+chown -R ${USERNAME} /home/${USERNAME}/host-app/
 
 echo "Root setup is done, after pressing enter you will log in as ${USERNAME}"
 echo "Run this command to continue the installation"

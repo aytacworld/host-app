@@ -11,6 +11,7 @@ case "$1" in
     then sudo /usr/local/host-app/update-hostapp
   *)
     echo "ha new <app-name>"
+    echo "ha update"
     ;;
 
 esac
