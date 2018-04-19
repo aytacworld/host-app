@@ -60,6 +60,6 @@ If it returns some outputs, open the files, and remove those characters. And rer
 
 ## Npm command not found
 ```bash
-/home/adem/host-app/scripts/4/script.sh: line 17: npm: command not found
+/home/user/host-app/scripts/4/script.sh: line 17: npm: command not found
 ```
 type `exit`, so you will be on root account, then relogin as user `su -l <USERNAME>`, and rerun the setup script `cd host-app && ./setup 4`

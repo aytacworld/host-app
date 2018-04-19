@@ -5,6 +5,12 @@ echo "Part four - setup mongodb database"
 PART_SETUP_DIR=${SETUP_DIR}/4
 SETUP_DB_DIR=_initdb
 
+# re-export nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
 # enable mongo service
 echo "Enable mongodb"
 sudo systemctl enable mongodb.service

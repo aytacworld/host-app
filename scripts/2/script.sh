@@ -9,7 +9,7 @@ sudo pacman -Suu
 sudo pacman -S nginx ufw certbot-nginx mongodb
 
 # setup firewall
-echo "Seting up firewall"
+echo "Setting up firewall"
 sudo ufw allow ssh
 sudo ufw allow http
 sudo ufw allow https

@@ -4,6 +4,12 @@ echo "Part five - setup node webapp"
 
 PART_SETUP_DIR=${SETUP_DIR}/5
 
+# re-export nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
 # create node app
 echo "Create host-app"
 cd ~ && mkdir host-main-app && cd host-main-app
