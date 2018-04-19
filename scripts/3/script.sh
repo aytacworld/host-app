@@ -25,6 +25,9 @@ echo "Updating default.conf"
 sed -i -e 's/${FQDN}/'"${FQDN}"'/g' ${PART_SETUP_DIR}/nginx-default-before-ssl.conf
 sudo cp ${PART_SETUP_DIR}/nginx-default-before-ssl.conf /etc/nginx/sites-available/default.conf
 
+# quickfix: remove blocking line for certbot
+sudo sed -i '/vnd.geocube+xml/d' /etc/nginx/mime.types
+
 # setup certbot
 echo "Generating ssl"
 sudo certbot --nginx certonly --agree-tos --register-unsafely-without-email -d ${FQDN}

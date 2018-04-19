@@ -40,8 +40,8 @@ echo "Just reboot when the script finishes"
 read -p "Press enter to continue"
 
 pm2 startup
-sudo env PATH=$PATH:${NVM_BIN} ${NVM_BIN}/../lib/node_modules/pm2/bin/pm2 startup systemd -u ${USERNAME} --hp ${HOME}
-
+NODE_PATH=${NVM_DIR}/versions/node/$(node -v)/
+sudo env PATH=$PATH:${NODE_PATH}/bin ${NODE_PATH}/lib/node_modules/pm2/bin/pm2 startup systemd -u ${USERNAME} --hp ${HOME}
 echo "You will see this message, if the previous script didn't exited with error code"
 echo "So machine will be rebooted"
 read -p "Press enter to reboot"
