@@ -1,0 +1,24 @@
+#!/bin/bash
+
+SETUP_FOLDER=/usr/local/lib/host-app/new
+APP_NAME=${1}
+FQDN=$(hostname -f)
+DOMAIN=${APP_NAME}.${FQDN}
+APP_PORT=${2}
+
+echo "Setting up nginx configuration"
+sudo cp ${SETUP_FOLDER}/nginx-before-ssl.conf /etc/nginx/sites-available/${APP_NAME}.conf
+sudo ln -sf /etc/nginx/sites-available/${APP_NAME}.conf /etc/nginx/sites-enabled/${APP_NAME}.conf
+sudo sed -i 's/{{DOMAIN}}/'"${DOMAIN}"'/g' /etc/nginx/sites-available/${APP_NAME}.conf
+sudo systemctl reload nginx.service
+
+echo "Lets encrypt certification"
+sudo certbot --nginx certonly --agree-tos --register-unsafely-without-email -d ${DOMAIN}
+
+echo "Setting up nginx ssl configuration"
+cat ${SETUP_FOLDER}/nginx-after-ssl.conf | sudo tee /etc/nginx/sites-available/${APP_NAME}.conf > /dev/null
+sudo sed -i -e 's/{{DOMAIN}}/'"${DOMAIN}"'/g' /etc/nginx/sites-available/${APP_NAME}.conf
+sudo sed -i -e 's/{{PORT}}/'"${APP_PORT}"'/g' /etc/nginx/sites-available/${APP_NAME}.conf
+
+echo "Reloading nginx"
+sudo systemctl reload nginx.service

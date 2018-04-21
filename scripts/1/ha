@@ -14,14 +14,14 @@ USR_FOLDER=/usr/local/lib/host-app
 case "$1" in
   new)
     set_app_name $2;
-    sudo ${USR_FOLDER}/create-new $APP_NAME;
+    ${USR_FOLDER}/create-new $APP_NAME;
     ;;
   update)
     set_app_name $2;
-    sudo ${USR_FOLDER}/update-app $APP_NAME;
+    ${USR_FOLDER}/update-app $APP_NAME;
     ;;
   update-host)
-    sudo ${USR_FOLDER}/update-hostapp;
+    ${USR_FOLDER}/update-hostapp;
     ;;
   *)
     echo "ha new <app-name>"
