@@ -1,0 +1,16 @@
+#!/bin/bash
+
+APP_NAME=${1}
+FQDN=$(hostname -f)
+DOMAIN=${APP_NAME}.${FQDN}
+
+echo "Setting up nginx configuration"
+sudo rm /etc/nginx/sites-available/${APP_NAME}.conf
+sudo rm /etc/nginx/sites-enabled/${APP_NAME}.conf
+
+echo "Remove certification"
+sudo certbot revoke --cert-path /etc/letsencrypt/live/${DOMAIN}/cert.pem
+sudo certbot delete --cert-name ${DOMAIN}
+
+echo "Reloading nginx"
+sudo systemctl reload nginx.service

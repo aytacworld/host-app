@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -z "${1}" ]; then
+  read -p "Please enter app-name: " APP_NAME
+else
+  APP_NAME=${1}
+fi
+
+cd ~
+
+echo "Removing nginx config"
+sudo /usr/local/lib/host-app/remove-nginx-config ${APP_NAME}
+
+echo "Removing git folder"
+rm -rf ./repo/${APP_NAME}.git/
+
+echo "Removing app folder"
+rm -rf ./apps/${APP_NAME}/
+

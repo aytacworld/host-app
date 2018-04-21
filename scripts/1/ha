@@ -20,12 +20,21 @@ case "$1" in
     set_app_name $2;
     ${USR_FOLDER}/update-app $APP_NAME;
     ;;
+  delete)
+    set_app_name $2;
+    ${USR_FOLDER}/delete-app $APP_NAME;
+    ;;
+  list)
+    ls -lh ~/apps
+    ;;
   update-host)
     ${USR_FOLDER}/update-hostapp;
     ;;
   *)
     echo "ha new <app-name>"
     echo "ha update <app-name>"
+    echo "ha delete <app-name>"
+    echo "ha list"
     echo "ha update-host"
     ;;
 esac
