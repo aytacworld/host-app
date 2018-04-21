@@ -9,7 +9,8 @@
         "NODE_ENV": "production",
         "USERNAME": "{{USERNAME}}",
         "FQDN": "{{FQDN}}",
-        "APP_NAME": "{{APP_NAME}}"
+        "APP_NAME": "{{APP_NAME}}",
+        "PORT": "{{PORT}}"
       }
     }
   ]
