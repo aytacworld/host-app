@@ -25,6 +25,7 @@ echo ${HOSTNAME} > /etc/hostname
 echo "Updating hosts"
 sed -i -e 's/{{FQDN}}/'"${FQDN}"'/g' ${PART_SETUP_DIR}/hosts
 sed -i -e 's/{{IP_ADDRESS}}/'"${IP_ADDRESS}"'/g' ${PART_SETUP_DIR}/hosts
+sed -i -e 's/{{HOSTNAME}}/'"${HOSTNAME}"'/g' ${PART_SETUP_DIR}/hosts
 cp ${PART_SETUP_DIR}/hosts /etc/hosts
 
 # Create user

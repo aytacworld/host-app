@@ -1,2 +1,2 @@
 127.0.0.1 localhost
-{{IP_ADDRESS}}   {{FQDN}}
+{{IP_ADDRESS}} {{FQDN}} {{HOSTNAME}}
