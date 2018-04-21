@@ -1,3 +1,9 @@
 #!/bin/bash
 
 echo "Updating ${1}"
+echo "this script is runned from <app>/hooks/post-receive, so here we will add the "
+# git pull to /home/user/www/<app-name>
+# rm -rf all files inside .gitignore
+# yarn
+# yarn deploy (hook will run yarn deploy, user can add here custom script)
+# pm2 restart <app-name>

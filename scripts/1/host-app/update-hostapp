@@ -2,3 +2,4 @@
 
 echo "Updating host app"
 sudo pacman -Syu
+echo "TODO this will git pull from github and/or run scripts for updating the host-app app"
