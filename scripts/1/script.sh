@@ -7,8 +7,8 @@ PART_SETUP_DIR=${SETUP_DIR}/1
 # Copy scripts
 echo "Copying hostapp scripts"
 USR_FOLDER=/usr/local/lib/host-app
-sudo mkdir ${USR_FOLDER}
-sudo cp ${PART_SETUP_DIR}/host-app/* ${USR_FOLDER}/
+sudo mkdir -p  ${USR_FOLDER}
+sudo cp -r ${PART_SETUP_DIR}/host-app/* ${USR_FOLDER}/
 sudo chown -R root:root ${USR_FOLDER}/
 sudo chmod -R +x ${USR_FOLDER}/
 
