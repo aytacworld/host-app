@@ -6,10 +6,11 @@ PART_SETUP_DIR=${SETUP_DIR}/1
 
 # Copy scripts
 echo "Copying hostapp scripts"
-sudo mkdir /usr/local/host-app
-sudo cp ${PART_SETUP_DIR}/host-app/* /usr/local/host-app/
-sudo chown -R root:root /usr/local/host-app/
-sudo chmod -R +x /usr/local/host-app/
+USR_FOLDER=/usr/local/lib/host-app
+sudo mkdir ${USR_FOLDER}
+sudo cp ${PART_SETUP_DIR}/host-app/* ${USR_FOLDER}/
+sudo chown -R root:root ${USR_FOLDER}/
+sudo chmod -R +x ${USR_FOLDER}/
 
 # Copy ha executable
 echo "Installing ha"
@@ -20,6 +21,5 @@ sudo chmod +x /usr/local/bin/ha
 
 # Create app/git folders
 echo "Creating directories"
-sudo mkdir -p /var/app
 mkdir -p ~/repo
-sudo mkdir -p /var/www
+mkdir -p ~/apps

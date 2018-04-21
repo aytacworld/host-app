@@ -1,3 +1,74 @@
 #!/bin/bash
 
-echo "Creating app ${1}"
+if [ -z "${1}" ]; then
+  read -p "Please enter app-name: " APP_NAME
+else
+  APP_NAME=${1}
+fi
+
+if [ -f ~/appid ]; then
+  APP_ID=$(cat ~/nextappid)
+else
+  APP_ID=1
+fi
+
+SETUP_FOLDER=/usr/local/lib/host-app/new
+GIT_FOLDER=${HOME}/repo/${APP_NAME}.git
+USERNAME=$(whoami)
+HOOK=hooks/post-receive
+APP_FOLDER=${HOME}/app/${APP_NAME}
+APP_PORT=$(( APP_ID + 8000 ))
+FQDN=$(hostname -f)
+DOMAIN=${APP_NAME}.${FQDN}
+
+echo "Initiating app"
+mkdir ${GIT_FOLDER}
+cd ${GIT_FOLDER}
+git init --bare
+
+echo "Installing hook"
+cp ${SETUP_FOLDER}/post-receive.sample ${HOOK}
+# chown ${USERNAME}:${USERNAME} ${HOOK}
+sed -i 's/{{APP_NAME}}/'"${APP_NAME}"'/g' ${HOOK}
+chmod +x ${HOOK}
+
+echo "Cloning app"
+cd ~/apps/
+git clone ${GIT_FOLDER}
+cd ${APP_NAME}
+
+echo "Installing startup app"
+cp ${SETUP_FOLDER}/start.js ./start.js
+cp ${SETUP_FOLDER}/pm2.json ./pm2.json
+sed -i 's/{{PORT}}/'"${APP_PORT}"'/g' ./pm2.json
+sed -i 's/{{USERNAME}}/'"${USERNAME}"'/g' ./pm2.json
+sed -i 's/{{APP_NAME}}/'"${APP_NAME}"'/g' ./pm2.json
+sed -i 's/{{FQDN}}/'"${FQDN}"'/g' ./pm2.json
+chmod +x ./start
+
+echo "Starting app"
+pm2 start ${APP_FOLDER}/pm2.json
+
+echo "Adding app to startup"
+pm2 save
+
+echo "Setting up nginx configuration"
+sudo cp ${SETUP_FOLDER}/nginx-before-ssl.conf /etc/nginx/sites-available/${APP_NAME}.conf
+sudo ln -sf /etc/nginx/sites-available/${APP_NAME}.conf /etc/nginx/sites-enabled/${APP_NAME}.conf
+sudo sed -i 's/{{DOMAIN}}/'"${DOMAIN}"'/g'
+sudo systemctl reload nginx.service
+
+echo "Lets encrypt certification"
+sudo certbot --nginx certonly --agree-tos --register-unsafely-without-email -d ${DOMAIN}
+
+echo "Setting up nginx ssl configuration"
+cat ${SETUP_FOLDER}/nginx-after-ssl.conf | sudo tee /etc/nginx/sites-available/${APP_NAME}.conf > /dev/null
+sudo sed -i -e 's/{{DOMAIN}}/'"${DOMAIN}"'/g' /etc/nginx/sites-available/${APP_NAME}.conf
+sudo sed -i -e 's/{{PORT}}/'"${APP_PORT}"'/g' /etc/nginx/sites-available/${APP_NAME}.conf
+
+echo "Reloading nginx"
+sudo systemctl reload nginx.service
+
+echo "Update app id for next app"
+NEXT_ID=$(( APP_ID + 1 ))
+echo $NEXT_ID > ~/nextappid

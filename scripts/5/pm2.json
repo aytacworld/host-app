@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "host-app",
+      "script": "./start.js",
+      "instances": 1,
+      "exec_mode": "fork",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": "8000"
+      }
+    }
+  ]
+}

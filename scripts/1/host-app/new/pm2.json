@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "{{APP_NAME}}",
+      "script": "./start.js",
+      "instances": 1,
+      "exec_mode": "fork",
+      "env": {
+        "NODE_ENV": "production",
+        "USERNAME": "{{USERNAME}}",
+        "FQDN": "{{FQDN}}",
+        "APP_NAME": "{{APP_NAME}}"
+      }
+    }
+  ]
+}

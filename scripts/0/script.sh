@@ -23,8 +23,8 @@ echo ${HOSTNAME} > /etc/hostname
 
 # Set hosts
 echo "Updating hosts"
-sed -i -e 's/${FQDN}/'"${FQDN}"'/g' ${PART_SETUP_DIR}/hosts
-sed -i -e 's/${IP_ADDRESS}/'"${IP_ADDRESS}"'/g' ${PART_SETUP_DIR}/hosts
+sed -i -e 's/{{FQDN}}/'"${FQDN}"'/g' ${PART_SETUP_DIR}/hosts
+sed -i -e 's/{{IP_ADDRESS}}/'"${IP_ADDRESS}"'/g' ${PART_SETUP_DIR}/hosts
 cp ${PART_SETUP_DIR}/hosts /etc/hosts
 
 # Create user
@@ -35,7 +35,7 @@ passwd ${USERNAME}
 
 # Set visudo permisions
 echo "Updating visudo"
-sed -i -e 's/${USERNAME}/'"${USERNAME}"'/g' ${PART_SETUP_DIR}/visudo
+sed -i -e 's/{{USERNAME}}/'"${USERNAME}"'/g' ${PART_SETUP_DIR}/visudo
 cp  ${PART_SETUP_DIR}/visudo /etc/sudoers.d/hostapp
 
 echo "Copying all setup files to users home folder"

@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 // Update this file so the host-app application will be hosted here
 var path = require('path');
 var express = require('express');
@@ -30,7 +29,7 @@ function runServer() {
   app.get('/', (req, res) => res.send('Hello stranger'));
   app.get('/api/data', (req, res) => getData((ppl) => res.json(ppl)));
   app.get('*', (req, res) => res.status(404).send('You lost, dude???'));
-  server.listen(8000);
+  server.listen(process.env.PORT);
 }
 
 runServer();

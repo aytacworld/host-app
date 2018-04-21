@@ -1,17 +1,25 @@
 #!/bin/bash
 
+USR_FOLDER=/usr/local/lib/host-app
+
 case "$1" in
   new)
-    if [ -n "$2" ];
-      then sudo /usr/local/host-app/create-new $2;
-      else echo "please provide a name";
+    if [ -n "$2" ]; then
+      sudo ${USR_FOLDER}/create-new $2;
+    else
+      echo "please provide a name";
     fi
     ;;
   update)
-    then sudo /usr/local/host-app/update-hostapp
+    sudo ${USR_FOLDER}/update-app $2;
+    ;;
+  update-host)
+    sudo ${USR_FOLDER}/update-hostapp;
+    ;;
   *)
     echo "ha new <app-name>"
-    echo "ha update"
+    echo "ha update <app-name>"
+    echo "ha update-host"
     ;;
 
 esac
