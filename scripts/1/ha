@@ -1,17 +1,24 @@
 #!/bin/bash
 
+function set_app_name {
+  if [ -z "$1" ]; then
+    read -p "Please provide app-name: " APP_NAME
+  else
+    APP_NAME=$1
+  fi
+  export APP_NAME
+}
+
 USR_FOLDER=/usr/local/lib/host-app
 
 case "$1" in
   new)
-    if [ -n "$2" ]; then
-      sudo ${USR_FOLDER}/create-new $2;
-    else
-      echo "please provide a name";
-    fi
+    set_app_name $2;
+    sudo ${USR_FOLDER}/create-new $APP_NAME;
     ;;
   update)
-    sudo ${USR_FOLDER}/update-app $2;
+    set_app_name $2;
+    sudo ${USR_FOLDER}/update-app $APP_NAME;
     ;;
   update-host)
     sudo ${USR_FOLDER}/update-hostapp;
@@ -21,5 +28,4 @@ case "$1" in
     echo "ha update <app-name>"
     echo "ha update-host"
     ;;
-
 esac
