@@ -19,3 +19,4 @@ rm -rf ./apps/${APP_NAME}/
 
 echo "stopping pm2 activity"
 pm2 delete ${APP_NAME}
+pm2 save
