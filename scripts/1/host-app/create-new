@@ -15,7 +15,7 @@ fi
 SETUP_FOLDER=/usr/local/lib/host-app/new
 GIT_FOLDER=${HOME}/repo/${APP_NAME}.git
 USERNAME=$(whoami)
-HOOK=hooks/post-receive
+HOOK=${GIT_FOLDER}/hooks/post-receive
 APP_FOLDER=${HOME}/apps/${APP_NAME}
 APP_PORT=$(( APP_ID + 8000 ))
 FQDN=$(hostname -f)

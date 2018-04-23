@@ -16,6 +16,11 @@ sudo ufw allow https
 sudo systemctl enable ufw.service
 sudo systemctl start ufw.service
 
+# setting up git
+echo "Setup git global user"
+git config --global user.email "${USERNAME}@${FQDN}"
+git config --global user.name "${USERNAME}"
+
 # install nvm
 echo "Installing nvm"
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
