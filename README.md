@@ -33,13 +33,19 @@ chmod +x ./setup
 
 After the setup, you should be able to navigate to your FQDN(eg. app.example.com) from any browser.
 
-# Update host-app (TODO)
+# Usage
 
-`ha update`
+- ha new <app-name>
+- ha update <app-name>
+- ha delete <app-name>
+- ha list
+- ha update-host
 
-# Add new application (TODO)
+# TODO
 
-`ha new <app-name>`
+- replace npm by yarn
+- package.json engines (run an app with specific version of node, npm, yarn, ...)
+- add bash-completion
 
 # Troubleshooting
 

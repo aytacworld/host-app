@@ -38,6 +38,9 @@ sed -i 's/{{PORT}}/'"${APP_PORT}"'/g' ./pm2.json
 sed -i 's/{{USERNAME}}/'"${USERNAME}"'/g' ./pm2.json
 sed -i 's/{{APP_NAME}}/'"${APP_NAME}"'/g' ./pm2.json
 sed -i 's/{{FQDN}}/'"${FQDN}"'/g' ./pm2.json
+cp ${SETUP_FOLDER}/package.json ./package.json
+sed -i 's/{{APP_NAME}}/'"${APP_NAME}"'/g' ./package.json
+
 
 echo "pushing first commit"
 git add .

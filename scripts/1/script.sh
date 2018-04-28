@@ -18,8 +18,8 @@ sudo cp ${PART_SETUP_DIR}/ha /usr/local/bin/ha
 sudo chown ${USERNAME}:${USERNAME} /usr/local/bin/ha
 sudo chmod +x /usr/local/bin/ha
 
-
 # Create app/git folders
 echo "Creating directories"
 mkdir -p ~/repo
 mkdir -p ~/apps
+mkdir -p ~/apps.backup

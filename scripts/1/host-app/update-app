@@ -1,9 +1,39 @@
 #!/bin/bash
 
 echo "Updating ${1}"
-echo "this script is runned from <app>/hooks/post-receive, so here we will add the "
-# git pull to /home/user/www/<app-name>
-# rm -rf all files inside .gitignore
-# yarn
-# yarn deploy (hook will run yarn deploy, user can add here custom script)
-# pm2 restart <app-name>
+
+\. ${HOME}/.nvm/nvm.sh
+
+APP_NAME=${1}
+APP_DIR=~/apps/${APP_NAME}
+BACKUP_DIR=~/apps.backup/${APP_NAME}-$(date +"%s")
+NEW_DIR=${APP_DIR}.temp
+GIT_DIR=~/repo/${APP_NAME}.git
+
+if [ ! -d ${GIT_DIR} ]; then
+  read -p "App doesn't exist, would you like to create it? [yN] " CREATE_APP
+  case "${CREATE_APP}" in
+    [Yy])
+      ha new ${APP_NAME}
+      ;;
+  esac
+  echo "exiting update process"
+  exit 0;
+fi
+
+echo "backup current"
+cp -r ${APP_DIR} ${BACKUP_DIR}
+
+echo "clone from git"
+git clone ~/repo/${APP_NAME}.git ${NEW_DIR}
+
+echo "install dependencies"
+cd ${NEW_DIR}
+npm i
+
+echo "replace old with new"
+rm -rf ${APP_DIR}
+mv ${NEW_DIR} ${APP_DIR}
+
+echo "restarting pm2 process"
+pm2 restart ${APP_NAME}
