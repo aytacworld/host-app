@@ -17,6 +17,9 @@ rm -rf ./repo/${APP_NAME}.git/
 echo "Removing app folder"
 rm -rf ./apps/${APP_NAME}/
 
+echo "Remove pm2 file"
+rm ./pm2/${APP_NAME}.json
+
 echo "stopping pm2 activity"
 pm2 delete ${APP_NAME}
 pm2 save

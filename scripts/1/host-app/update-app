@@ -36,4 +36,4 @@ rm -rf ${APP_DIR}
 mv ${NEW_DIR} ${APP_DIR}
 
 echo "restarting pm2 process"
-pm2 restart ${APP_NAME}
+pm2 restart ${HOME}/pm2/${APP_NAME}.json

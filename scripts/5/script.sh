@@ -19,7 +19,7 @@ npm i -s express body-parser cors mongodb helmet
 # setup start.js file
 echo "Copy start script"
 cp ${PART_SETUP_DIR}/node-start.js ./start.js
-cp ${PART_SETUP_DIR}/pm2.json ./pm2.json
+cp ${PART_SETUP_DIR}/pm2.json ./host-app.json
 
 # install PM2 and run node app
 echo "Install pm2 and setup host-app"

@@ -20,6 +20,7 @@ APP_FOLDER=${HOME}/apps/${APP_NAME}
 APP_PORT=$(( APP_ID + 8000 ))
 FQDN=$(hostname -f)
 DOMAIN=${APP_NAME}.${FQDN}
+PM2_FILE=${HOME}/pm2/${APP_NAME}.json
 
 echo "Initiating app"
 mkdir ${GIT_FOLDER}
@@ -33,11 +34,11 @@ cd ${APP_NAME}
 
 echo "Installing startup app"
 cp ${SETUP_FOLDER}/start.js ./start.js
-cp ${SETUP_FOLDER}/pm2.json ./pm2.json
-sed -i 's/{{PORT}}/'"${APP_PORT}"'/g' ./pm2.json
-sed -i 's/{{USERNAME}}/'"${USERNAME}"'/g' ./pm2.json
-sed -i 's/{{APP_NAME}}/'"${APP_NAME}"'/g' ./pm2.json
-sed -i 's/{{FQDN}}/'"${FQDN}"'/g' ./pm2.json
+cp ${SETUP_FOLDER}/pm2.json ${PM2_FILE}
+sed -i 's/{{PORT}}/'"${APP_PORT}"'/g' ${PM2_FILE}
+sed -i 's/{{USERNAME}}/'"${USERNAME}"'/g' ${PM2_FILE}
+sed -i 's/{{APP_NAME}}/'"${APP_NAME}"'/g' ${PM2_FILE}
+sed -i 's/{{FQDN}}/'"${FQDN}"'/g' ${PM2_FILE}
 cp ${SETUP_FOLDER}/package.json ./package.json
 sed -i 's/{{APP_NAME}}/'"${APP_NAME}"'/g' ./package.json
 
@@ -53,7 +54,7 @@ sed -i 's/{{APP_NAME}}/'"${APP_NAME}"'/g' ${HOOK}
 chmod +x ${HOOK}
 
 echo "Starting app"
-pm2 start ${APP_FOLDER}/pm2.json
+pm2 start ${PM2_FILE}
 
 echo "Adding app to startup"
 pm2 save
