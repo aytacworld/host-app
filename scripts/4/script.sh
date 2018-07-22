@@ -20,7 +20,7 @@ sudo systemctl start mongodb.service
 echo "Create Mongodb app"
 cd ~ && mkdir -p ${SETUP_DB_DIR} && cd ${SETUP_DB_DIR}
 cp ${PART_SETUP_DIR}/package.json ./package.json
-npm i -s mongodb
+yarn add mongodb
 
 # create script
 echo "Copy init script"

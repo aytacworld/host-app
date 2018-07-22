@@ -43,9 +43,9 @@ After the setup, you should be able to navigate to your FQDN(eg. app.example.com
 
 # TODO
 
-- replace npm by yarn
 - package.json engines (run an app with specific version of node, npm, yarn, ...)
 - add bash-completion
+- update node easily with dependencies(node-nvm-version, npm, yarn, pm2)
 
 # Troubleshooting
 

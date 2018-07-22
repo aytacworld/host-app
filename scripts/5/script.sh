@@ -14,7 +14,7 @@ NODE_PATH=${NVM_DIR}/versions/node/$(node -v)
 echo "Create host-app"
 cd ~ && mkdir apps/host-app && cd apps/host-app
 cp ${PART_SETUP_DIR}/package.json ./package.json
-npm i -s express body-parser cors mongodb helmet
+yarn add express body-parser cors mongodb helmet
 
 # setup start.js file
 echo "Copy start script"

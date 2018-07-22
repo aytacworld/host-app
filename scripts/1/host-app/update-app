@@ -29,7 +29,7 @@ git clone ~/repo/${APP_NAME}.git ${NEW_DIR}
 
 echo "install dependencies"
 cd ${NEW_DIR}
-npm i
+yarn
 
 echo "replace old with new"
 rm -rf ${APP_DIR}

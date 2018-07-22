@@ -8,6 +8,9 @@ sudo pacman -Syy
 sudo pacman -Suu
 sudo pacman -S nginx ufw certbot-nginx mongodb
 
+# install system stuff which is needed for node-gyp, ...
+sudo pacman -S make gcc
+
 # setup firewall
 echo "Setting up firewall"
 sudo ufw allow ssh
@@ -32,3 +35,6 @@ export NVM_DIR="$HOME/.nvm"
 # install node lts
 echo "Installing node lts"
 nvm install --lts
+
+# install yarn here :)
+npm i -g yarn
